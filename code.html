@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🛡️ Compras Seguras para Idosos</title>
+  <meta name="description" content="Busque produtos em lojas confiáveis como Americanas e Magalu. Evite golpes na internet!">
+  <meta name="theme-color" content="#4CAF50">
+  <!-- PWA: Para instalar como app no celular -->
+  <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiQ29tcHJhcyBTZWd1cmFzIGZvciBJZG9zb3MiLCJzaG9ydF9uYW1lIjoiQ29tcHJhcyBTZWd1cmFzIiwic3RhcnRfdXJsIjoiLyIsImRpc3BsYXkiOiJzdGFuZHN0YWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiI2YwZjhmZiIsInRoZW1lX2NvbG9yIjoiIzRDQUY1MCIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3BuZztiYXNlNjQsL2ltYWdlcy9pY29uLnBuZyIsInNpemVzIjoiMTkyeDE5MiIsInR5cGUiOiJpbWFnZS9wbmcifV19">
+  <style>
+    /* CSS Completo - Design Amigável para Idosos */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: Arial, sans-serif; 
+      background: linear-gradient(to bottom, #f0f8ff, #e6f3ff); 
+      color: #333; 
+      padding: 20px; 
+      min-height: 100vh; 
+      text-align: center; 
+    }
+    .container { max-width: 600px; margin: 0 auto; }
+    h1 { 
+      font-size: 28px; 
+      color: #4CAF50; 
+      margin-bottom: 10px; 
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
+    }
+    p.intro { 
+      font-size: 18px; 
+      margin-bottom: 20px; 
+      line-height: 1.4; 
+    }
+    input[type="text"] { 
+      width: 100%; 
+      max-width: 400px; 
+      padding: 15px; 
+      font-size: 18px; 
+      border: 3px solid #ddd; 
+      border-radius: 10px; 
+      margin: 15px 0; 
+      text-align: center; 
+    }
+    input:focus { border-color: #4CAF50; outline: none; }
+    button { 
+      background: #4CAF50; 
+      color: white; 
+      padding: 15px 30px; 
+      font-size: 18px; 
+      border: none; 
+      border-radius: 10px; 
+      cursor: pointer; 
+      margin: 10px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+      transition: background 0.3s; 
+    }
+    button:hover { background: #45a049; }
+    button:disabled { background: #ccc; cursor: not-allowed; }
+    #resultados { 
+      margin-top: 30px; 
+      text-align: left; 
+    }
+    .loja { 
+      background: white; 
+      margin: 15px 0; 
+      padding: 20px; 
+      border-radius: 10px; 
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+    }
+    .loja a { 
+      font-size: 20px; 
+      color: #2196F3; 
+      text-decoration: none; 
+      flex-grow: 1; 
+    }
+    .loja a:hover { text-decoration: underline; }
+    .dica { 
+      background: #fff3cd; 
+      border: 2px solid #ffeaa7; 
+      padding: 15px; 
+      border-radius: 10px; 
+      margin: 20px 0; 
+      font-size: 16px; 
+    }
+    .alerta { color: #ff9800; font-weight: bold; }
+    .voz-btn { background: #2196F3; }
+    .voz-btn:hover { background: #1976D2; }
+    /* Responsivo para Celular */
+    @media (max-width: 600px) { 
+      body { padding: 10px; } 
+      h1 { font-size: 24px; } 
+      input, button { font-size: 16px; padding: 12px; } 
+      .loja { flex-direction: column; text-align: center; } 
+    }
+    /* Verificação de Segurança */
+    .inseguro { 
+      background: #ffebee; 
+      border: 2px solid #f44336; 
+      color: #c62828; 
+      padding: 15px; 
+      border-radius: 10px; 
+      margin: 20px 0; 
+      font-size: 18px; 
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🛡️ Compras Seguras para Idosos</h1>
+    <p class="intro">Olá! Este site ajuda você a encontrar lojas confiáveis para comprar online, como Americanas e Magalu. Evite sites falsos e golpes!</p>
+    
+    <input type="text" id="produto" placeholder="Digite o que quer comprar, ex: celular Samsung ou tênis Nike" />
+    <br>
+    <button onclick="buscarLojas()">🔍 Buscar em Lojas Seguras</button>
+    <button class="voz-btn" onclick="lerDicas()" id="vozBtn">🔊 Ler Dicas em Voz Alta</button>
+    
+    <div id="resultados"></div>
+    
+    <div class="dica">
+      <p class="alerta">💡 Dicas Importantes:</p>
+      <ul style="text-align: left; margin: 10px 0;">
+        <li>Procure sempre o <strong>cadeado 🔒</strong> na barra do navegador (lado esquerdo).</li>
+        <li>Evite preços muito baixos ou sites com erros de português.</li>
+        <li>Se o site pedir dados pessoais cedo, saia e use lojas conhecidas!</li>
+      </ul>
+    </div>
+    
+    <!-- Alerta de Segurança (aparece se necessário) -->
+    <div id="alertaSeguranca" class="inseguro" style="display: none;">
+      ⚠️ Atenção: Esta página não é segura (sem HTTPS). Use apenas lojas confiáveis!
+      <br><button onclick="buscarLojas()" style="margin-top: 10px; padding: 10px 20px;">Ir para Busca Segura</button>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript Completo - Lógica do Site
+    const lojasConfiaveis = [
+      { nome: '🛒 Americanas', url: 'https://www.americanas.com.br/busca/' },
+      { nome: '🛒 Magalu (Magazine Luiza)', url: 'https://www.magazineluiza.com.br/busca/' },
+      { nome: '🛒 Amazon Brasil', url: 'https://www.amazon.com.br/s?k=' },
+      { nome: '🛒 Casas Bahia', url: 'https://www.casasbahia.com.br/busca?Ntt=' },
+      { nome: '🛒 Submarino', url: 'https://www.submarino.com.br/busca/' },
+      { nome: '📊 Buscapé (Comparar Preços)', url: 'https://www.buscape.com.br/busca/' }
+    ];
+
+    function buscarLojas() {
+      const produto = document.getElementById('produto').value.trim();
+      const resultados = document.getElementById('resultados');
+      
+      if (!produto) {
+        resultados.innerHTML = '<p style="color: red; font-size: 18px;">Por favor, digite o que quer comprar!</p>';
+        return;
+      }
+      
+      let html = '<h2 style="color: #4CAF50; text-align: center; margin-bottom: 20px;">Lojas Confiáveis para "' + produto + '":</h2>';
+      
+      lojasConfiaveis.forEach(loja => {
+        const urlCompleta = loja.url + encodeURIComponent(produto);
+        html += `
+          <div class="loja">
+            <a href="${urlCompleta}" target="_blank" rel="noopener noreferrer">
+              ${loja.nome} - Clique para comprar com segurança!
+            </a>
+            <button onclick="window.open('${urlCompleta}', '_blank')" style="background: #4CAF50; padding: 10px 15px; margin-left: 10px; border-radius: 5px;">Ir Agora</button>
+          </div>
+        `;
+      });
+      
+      html += '<p style="font-size: 16px; margin-top: 20px;"><strong>✅ Todas essas lojas são verificadas e seguras. Compartilhe este site com amigos!</strong></p>';
+      resultados.innerHTML = html;
+      
+      // Rola para os resultados
+      resultados.scrollIntoView({ behavior: 'smooth' });
+      
+      // Voz: Lê os resultados
+      lerVoz(produto);
+    }
+
+    function lerVoz(texto) {
+      if ('speechSynthesis' in window) {
+        const fala = new SpeechSynthesisUtterance(
+          texto ? 
+          `Encontrei lojas seguras para ${texto}. Americanas, Magalu e Amazon estão prontas para você. Sempre verifique o cadeado no navegador.` :
+          `Olá! Digite o produto na caixa acima e clique em buscar para ver lojas confiáveis. Evite sites desconhecidos para não cair em golpes.`
+        );
+        fala.lang = 'pt-BR';
+        fala.rate = 0.9; // Velocidade mais lenta para idosos
+        speechSynthesis.speak(fala);
+      } else {
+        alert('Seu navegador não suporta leitura em voz. Use Chrome ou Edge para melhor experiência.');
+      }
+    }
+
+    function lerDicas() {
+      lerVoz();
+    }
+
+    // Verifica segurança da página ao carregar
+    window.addEventListener('load', function() {
+      const isSecure = location.protocol === 'https:';
+      const alerta = document.getElementById('alertaSeguranca');
+      if (!isSecure) {
+        alerta.style.display = 'block';
+      }
+      
+      // Lê dicas iniciais em voz (opcional, comente se não quiser)
+      // lerVoz();
+    });
+
+    // Detecta se veio de uma busca (ex: Google) e preenche automaticamente
+    const urlParams = new URLSearchParams(window.location.search);
+    const termoBusca = urlParams.get('q') || urlParams.get('search');
+    if (termoBusca) {
+      document.getElementById('produto').value = termoBusca;
+      buscarLojas();
+    }
+  </script>
+</body>
+</html>
